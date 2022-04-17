@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import Loading from '../../Loading/Loading';
 
 const Login = () => {
     const [userInput, setUserInput] = useState({
@@ -20,7 +21,7 @@ const Login = () => {
     const [signInWithEmail, user, loading, hookError] = useSignInWithEmailAndPassword(auth);
 
     if (loading) {
-        return <p>Loading...</p>;
+        return <Loading></Loading>;
       }
 
      /*==================Email Validation===============*/
@@ -52,6 +53,10 @@ const Login = () => {
     if(user){
         navigate(from, {replace:true});
     }
+
+    const navigateSignup =()=>{
+        navigate('/signup')
+    }
     /*============Handle on submit button============== */
     const handleLogin = (e) => {
         e.preventDefault();
@@ -71,6 +76,7 @@ const Login = () => {
                 <Form.Group className="mb-3"  controlId="formBasicPassword">
                     <Form.Control type="password" name='password' placeholder="Password" onChange={handlePassword} />
                 </Form.Group>
+                <p>Don't have an account ? <Link to={'/signup'} className='text-danger text-decoration-none' onClick={navigateSignup}>Signup Now</Link> </p>
                 <Button variant="primary" type="submit">
                     Login
                 </Button>
