@@ -1,0 +1,24 @@
+[
+    {
+        "id": "1",
+        "name": "Relationship",
+        "price": 2000,
+        
+        "img": "https://html.modernwebtemplates.com/psychologist/images/service-icons/relationship.png",
+        "description" : "A quick brown fox jumps high over the lazy dog"
+      },
+    {
+        "id": "2",
+        "name": "Feelings",
+        "price": 3000,
+        "img": "https://html.modernwebtemplates.com/psychologist/images/service-icons/mental.png",
+        "description" : "A quick brown fox jumps high over the lazy dog"
+      },
+    {
+        "id": "3",
+        "name": "Mental",
+        "price": 5000,
+        "img": "https://html.modernwebtemplates.com/psychologist/images/service-icons/feelings.png",
+        "description" : "A quick brown fox jumps high over the lazy dog"
+      }
+    ]
