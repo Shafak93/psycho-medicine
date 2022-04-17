@@ -1,0 +1,11 @@
+.banner-img{
+    position: relative;
+}
+
+.banner-text{
+    position: absolute;
+    margin-top: 5%;
+    margin-left: 60%;
+    font-weight: 700;
+    font-size: 60px;
+}
