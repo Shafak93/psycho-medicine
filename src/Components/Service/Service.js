@@ -5,12 +5,15 @@ import './Service.css'
 const Service = (props) => {
     const {img, name, price, description} = props.service
     return (
-        <div className='service-box col-lg-4 text-center mb-4'>
-            <img  src={img} alt="" />
-            <h2>{name}</h2>
-            <p>{description}</p>
-            <p>{price}</p>
-            <Link to='/checkout' className='appoint-btn'>Appoint Now</Link>
+        <div className=' g-4 col-12 col-md-6 col-lg-4  mb-4'>
+            <div className="service-box card text-center" >
+                <img src={img} className="card-img-top mx-auto" />
+                <div className="card-body">
+                    <h5 className="card-title">{name}</h5>
+                    <p className="card-text">{description}</p>
+                    <Link to='/checkout' className='appoint-btn'>Appoint Now</Link>
+                </div>
+            </div>
         </div>
     );
 };

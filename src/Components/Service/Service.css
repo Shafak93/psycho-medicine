@@ -1,6 +1,6 @@
 .service-box{
     border: 1px solid lightgray;
-    /* margin-right: 50px; */
+    transition: 0.5s;
     padding: 20px 10px;
     border-radius: 50px;
     background: linear-gradient(145deg, #cacaca, #f0f0f0);
@@ -15,6 +15,9 @@
                 -31px -31px 63px #ffffff;
 
 }
+.service-box img{
+    width: 50px;
+}
 .appoint-btn{
     text-decoration: none;
     border: 1px solid white;
@@ -26,5 +29,5 @@
 }
 .appoint-btn:hover{
     background-color: lightgray;
-    color: white;
+    color: gray;
 }
