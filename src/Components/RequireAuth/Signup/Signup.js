@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Button, Form } from 'react-bootstrap';
 import './signup.css'
 import auth from '../../../firebase.init';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../../Loading/Loading';
+import SocialMedia from '../../SocialMedia/SocialMedia';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Signup = () => {
     const [userInput, setUserInput] = useState({
@@ -25,11 +28,31 @@ const Signup = () => {
         error,
       ] = useCreateUserWithEmailAndPassword(auth);
       const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
-      /*===========Loading function============== */
-      if (loading) {
-        return <Loading></Loading>;
-      }
+    useEffect(() => {
+        if (user) {
+            navigate(from);
+        }
+    }, [user]);
+
+    useEffect(() => {
+        if (error) {
+            switch (error?.code) {
+                case "auth/invalid-email":
+                    toast("Invalid email provided, please provide a valid email");
+                    break;
+                case "auth/invalid-password":
+                    toast("Wrong password. Intruder!!");
+                    break;
+                default:
+                    toast("something went wrong");
+            }
+        }
+    }, [error]);
+
+      
 
 
       /*==================Email Validation===============*/
@@ -72,11 +95,15 @@ const Signup = () => {
         const navigateLogin =()=>{
             navigate('/login')
         }
+        /*===========Loading function============== */
+      if (loading) {
+        return <Loading></Loading>;
+      }
     /*================On submit button handler ================ */
       const handleSignup =(event)=>{
         event.preventDefault();
         createUserWithEmailAndPassword(userInput.email,userInput.password);
-        navigate('/')
+        // navigate('/')
         
       }
     return (
@@ -108,7 +135,9 @@ const Signup = () => {
                 variant="primary" type="submit">
                     Sign up
                 </Button>
+                <ToastContainer />
                 </Form>
+                <SocialMedia></SocialMedia>
         </div>
     );
 };
