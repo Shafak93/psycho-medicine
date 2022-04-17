@@ -7,6 +7,7 @@ import Signup from './Components/RequireAuth/Signup/Signup';
 import Banner from './Components/Banner/Banner';
 import Home from './Components/Home/Home';
 import Services from './Components/Services/Services';
+import Checkout from './Components/Checkout/Checkout';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path='/signup' element={<Signup></Signup>}></Route>
         <Route path='/banner' element={<Banner></Banner>}></Route>
         <Route path='/services' element={<Services></Services>}></Route>
+        <Route path='/checkout' element={<Checkout></Checkout>}></Route>
       </Routes>
     </div>
   );
