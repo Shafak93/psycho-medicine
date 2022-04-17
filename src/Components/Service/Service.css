@@ -15,3 +15,16 @@
                 -31px -31px 63px #ffffff;
 
 }
+.appoint-btn{
+    text-decoration: none;
+    border: 1px solid white;
+    background-color: gray;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    transition: 0.5s;
+}
+.appoint-btn:hover{
+    background-color: lightgray;
+    color: white;
+}
