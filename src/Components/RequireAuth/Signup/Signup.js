@@ -15,14 +15,37 @@ const Signup = () => {
         password:"",
         others:"",
     })
-    const [validPass, setValidPass] = useState("")
+    const [agree, setAgree] = useState();
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+      ] = useCreateUserWithEmailAndPassword(auth);
+
+      if (loading) {
+        return <p>Loading...</p>;
+      }
+
+
+      /*==================Email Validation===============*/
+    const handleEmail = event =>{
+        const emailRegex = /\S+@\S+\.\S+/;
+        const validEmail = emailRegex.test(event.target.value);
+        if(validEmail){
+            setUserInput({...userInput, email:event.target.value});
+            setErrors({errors, email:''})
+        }else{
+            setErrors({...errors, email:'Invalid email'})
+            setUserInput({...userInput, email:''});
+        }
+    }
 
     /*================ Password handle and validation================ */
     const handlePassword =(event)=>{
         const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
         const validPass = passwordRegex.test(event.target.value)
         if(validPass){
-            // setValidPass(event.target.value);
             setUserInput({ ...userInput, password: event.target.value });
             setErrors({...errors, password:''})
         }else{
@@ -30,45 +53,20 @@ const Signup = () => {
             setUserInput({ ...userInput, password: "" });
         }
     }
-/*==================Email Validation===============*/
-const handleEmail = event =>{
-    const emailRegex = /\S+@\S+\.\S+/;
-    const validEmail = emailRegex.test(event.target.value);
-    if(validEmail){
-        setUserInput({...userInput, email:event.target.value});
-        setErrors({errors, email:''})
-    }else{
-        setErrors({...errors, email:'Invalid email'})
-        setUserInput({...userInput, email:''});
-    }
-}
-/*================Confirm Password=================*/
-const handleConfirmPassword = event =>{
-    if(event.target.value === userInput.password){
-        setUserInput({...userInput, confirmPass: event.target.value});
-        setErrors({...errors, confirmPass: ''});
-    }else{
-        setErrors({...errors, confirmPass:"Password didn't match.Type again"});
-        setUserInput({...userInput, confirmPass:""})
-    }
-}
     
-    const [
-        createUserWithEmailAndPassword,
-        user,
-        loading,
-        error,
-      ] = useCreateUserWithEmailAndPassword(auth);
-      
-
+    /*================Confirm Password handle and validation=================*/
+        const handleConfirmPassword = event =>{
+            if(event.target.value === userInput.password){
+                setUserInput({...userInput, confirmPass: event.target.value});
+                setErrors({...errors, confirmPass: ''});
+            }else{
+                setErrors({...errors, confirmPass:"Password didn't match.Type again"});
+                setUserInput({...userInput, confirmPass:""})
+            }
+        }
+    /*================On submit button handler ================ */
       const handleSignup =(event)=>{
         event.preventDefault();
-        // console.log(event)
-        // const email = event.target.email.value;
-        // const password = event.target.password.value;
-        
-        // console.log(email, password)
-        // createUserWithEmailAndPassword(email, password);
         createUserWithEmailAndPassword(userInput.email,userInput.password);
         console.log(userInput);
       }
@@ -76,24 +74,29 @@ const handleConfirmPassword = event =>{
         <div className='mt-5 container w-25'>
            <Form onSubmit={handleSignup}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    
                     <Form.Control type="email" name='email' placeholder="Enter email" onChange={handleEmail}/>
+                    {errors?.email && <p><small className='text-danger mt-2'>{errors.email}</small></p>}
                 </Form.Group>
-
                 <Form.Group className="mb-3"  controlId="formBasicPassword">
-                    
                     <Form.Control type="password" name='password' placeholder="Password" onChange={handlePassword} />
-                    {errors?.password && <p>{errors.password}</p>}
+                    {errors?.password && <p><small className='text-danger mt-2'>{errors.password}</small></p>}
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
-                    
                     <Form.Control type="password" name='confirmPassword' placeholder="Confirm Password" onChange={handleConfirmPassword}/>
+                    {errors?.confirmPass && <p><small className='text-danger mt-2'>{errors.confirmPass}</small></p>}
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
+                    <Form.Check
+                    className={agree ? 'text-primary' : 'text-danger'}
+                    onClick={()=>setAgree(!agree)}
+                     type="checkbox" 
+                     label="I accept all the terms and conditions of psycho-medicine" />
                 </Form.Group>
-                <Button variant="primary" type="submit">
-                    Submit
+                <Button 
+                className='d-block mx-auto w-50'
+                disabled ={!agree}
+                variant="primary" type="submit">
+                    Sign up
                 </Button>
                 </Form>
         </div>
