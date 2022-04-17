@@ -4,7 +4,7 @@ import './Banner.css'
 
 const Banner = () => {
     return (
-        <div className="row">
+        <div id='banner' className="row">
             <div className='banner-img col-md-12 col-sm-12 col-lg-12' style={{backgroundImage:`url(${banner})`,
         backgroundRepeat: 'no-repeat',
         height:'600px' }}>

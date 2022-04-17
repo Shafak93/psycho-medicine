@@ -14,17 +14,19 @@ const Header = () => {
       }
     return (
         <div>
-            <Navbar className='d-flex justify-content-between align-iems-center' bg="light" variant="light">
+            <Navbar className='d-flex justify-content-between align-iems-center sticky-top' bg="light" variant="light">
                 <div>
-                    <Container className='d-flex align-items-center'>
-                    <Navbar.Brand as={Link} to="/">
-                        <img className='w-50' src={logo} alt="" />
+                    <Container className='d-flex justify-content-center align-items-center'>
+                    <Navbar.Brand as={Link} to="/" className='d-flex justify-content-center align-items-center'>
+                        
+                        <img className='w-25' src={logo} alt="" />
+                        <p className='ms-3'>Psycho Medicine</p>
                     </Navbar.Brand>
                     <Nav className="me-auto">
                     <Nav.Link as={Link} to="/">Home</Nav.Link>
-                    <Nav.Link  as={Link} to='banner'>Brand Info</Nav.Link>
+                    <Nav.Link  href='#banner'>Brand Info</Nav.Link>
                     
-                    <Nav.Link  as={Link} to='services'>Services</Nav.Link>
+                    <Nav.Link href='#services'>Services</Nav.Link>
                     </Nav>
                     </Container>
                 </div>

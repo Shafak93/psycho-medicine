@@ -11,6 +11,7 @@ const Service = (props) => {
                 <div className="card-body">
                     <h5 className="card-title">{name}</h5>
                     <p className="card-text">{description}</p>
+                    <p>Price:${price}</p>
                     <Link to='/checkout' className='appoint-btn'>Appoint Now</Link>
                 </div>
             </div>
