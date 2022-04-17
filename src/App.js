@@ -9,6 +9,7 @@ import Home from './Components/Home/Home';
 import Services from './Components/Services/Services';
 import Checkout from './Components/Checkout/Checkout';
 import Requireauth from './Components/RequireAuth/Requireauth/Requireauth';
+import Notfound from './Components/NotFound/Notfound';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Checkout></Checkout>
           </Requireauth>
         }></Route>
+        <Route path='*' element={<Notfound></Notfound>}></Route>
       </Routes>
     </div>
   );

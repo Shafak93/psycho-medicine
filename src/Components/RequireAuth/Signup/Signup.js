@@ -4,6 +4,7 @@ import { Button, Form } from 'react-bootstrap';
 import './signup.css'
 import auth from '../../../firebase.init';
 import { Link, useNavigate } from 'react-router-dom';
+import Loading from '../../Loading/Loading';
 
 const Signup = () => {
     const [userInput, setUserInput] = useState({
@@ -27,7 +28,7 @@ const Signup = () => {
 
       /*===========Loading function============== */
       if (loading) {
-        return <p>Loading...</p>;
+        return <Loading></Loading>;
       }
 
 
