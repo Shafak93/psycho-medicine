@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -18,14 +18,16 @@ const Login = () => {
         password: "",
         general: "",
     })
+    const emailRef = useRef('')
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname ||"/";
     const [signInWithEmail, user, loading, hookError] = useSignInWithEmailAndPassword(auth);
+    const [sendPasswordResetEmail, sending, error] = useSendPasswordResetEmail(auth);
 
    
 
-
+/*==========Error toast function=============== */
     useEffect(() => {
         const error = hookError;
         if(error){
@@ -42,7 +44,7 @@ const Login = () => {
             }
         }
     }, [hookError])
-     /*==================Email Validation===============*/
+/*==================Email Validation===============*/
      const handleEmail = event =>{
         const emailRegex = /\S+@\S+\.\S+/;
         const validEmail = emailRegex.test(event.target.value);
@@ -55,7 +57,7 @@ const Login = () => {
         }
     }
 
-     /*================ Password handle and validation================ */
+/*================ Password handle and validation================ */
      const handlePassword =(event)=>{
         const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
         const validPass = passwordRegex.test(event.target.value)
@@ -67,26 +69,30 @@ const Login = () => {
             setUserInput({ ...userInput, password: "" });
         }
     }
-    /*=======================Redirected page============== */
-    // if(user){
-    //     navigate(from, {replace:true});
-    // }
+/*=======================Redirected page============== */
     useEffect(()=>{
         if(user){
             navigate(from,{replace: true});
         }
     },[user]);
-
+/*================Navigate to sign up page function============ */
     const navigateSignup =()=>{
         navigate('/signup')
     }
 
 
-
+/*=================Loading function==================== */
     if (loading) {
         return <Loading></Loading>;
       }
-    /*============Handle on submit button============== */
+/*==========Forget password reset============= */
+        
+      const forgetPasswordReset = async ()=>{
+        const email = emailRef.current.value;
+            await sendPasswordResetEmail(email);
+            alert('Sent email');
+    }
+/*============Handle on submit button============== */
     const handleLogin = (e) => {
         e.preventDefault();
 
@@ -112,6 +118,7 @@ const Login = () => {
                 <Button variant="primary" type="submit">
                     Login
                 </Button>
+                <p>Forget password ? <a href="" className='text-primary text-decoration-none' onClick={forgetPasswordReset}>Reset password</a> </p>
                 <ToastContainer />
             </Form>
             <SocialMedia></SocialMedia>
