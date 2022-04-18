@@ -1,3 +1,10 @@
+# Project Name : Psycho Medicine
+## Thechnology i use
+* html, css, bootstrap
+* React
+* React route, React hook
+* Firebase authentication, firebase hooks
+* External Toast
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

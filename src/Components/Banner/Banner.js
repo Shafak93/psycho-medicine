@@ -12,11 +12,12 @@ const Banner = () => {
                         <Carousel.Item>
                             <img
                             className="d-block w-100"
-                            src={banner1}
+                            src={banner3}
                             alt="First slide"
                             />
                             <Carousel.Caption>
-                            <h1 className='text-primary'>Psycho Medicine</h1>
+                           <h1 className='text-primary'>Psycho Medicine</h1>
+                            
                             </Carousel.Caption>
                         </Carousel.Item>
                         <Carousel.Item>
@@ -25,22 +26,15 @@ const Banner = () => {
                             src={banner2}
                             alt="Second slide"
                             />
-
-                            <Carousel.Caption>
-                            <h1 className='text-primary'>Psycho Medicine</h1>
-                            </Carousel.Caption>
                         </Carousel.Item>
                         <Carousel.Item>
                             <img
                             className="d-block w-100"
-                            src={banner3}
+                            src={banner1}
                             alt="Third slide"
                             />
 
-                            <Carousel.Caption>
-                           <h1 className='text-primary'>Psycho Medicine</h1>
                             
-                            </Carousel.Caption>
                         </Carousel.Item>
                 </Carousel>
         // <div id='banner' className="row">
