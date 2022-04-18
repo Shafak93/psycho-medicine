@@ -11,8 +11,8 @@ const Footer = () => {
             <div className='col-lg-4 mt-4'>
                 <ul>
                 <p>Quick Links</p>
-                    <Link className='link' to='/'><li>Home</li></Link>
-                    <Link className='link' to='/services'><li>Services</li></Link>
+                    <Link  className='link' to='/'><li>Home</li></Link>
+                    <Link  className='link' to='/services'><li>Services</li></Link>
                     <Link className='link' to='/blog'><li>Blog</li>  </Link>
                     <Link className='link' to='/aboutme'> <li>About me</li></Link>
                     <Link className='link' to='/login'><li>Login</li></Link>
