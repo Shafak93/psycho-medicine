@@ -1,5 +1,5 @@
 footer{
-    height: 200px;
+    height: 220px;
     background-color: #555555;
     color: rgb(224, 212, 212);
     position: relative;
@@ -7,5 +7,12 @@ footer{
 .footer-text{
     position: absolute;
     top: 33%;
-    left: 38%;
+    left: 30%;
+}
+.link{
+    text-decoration: none;
+    color: white;
+}
+.link:hover{
+    color: antiquewhite;
 }
