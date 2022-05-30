@@ -27,7 +27,9 @@ const Login = () => {
 
    
 
-/*==========Error toast function=============== */
+/*==================
+Error toast function
+====================*/
     useEffect(() => {
         const error = hookError;
         if(error){

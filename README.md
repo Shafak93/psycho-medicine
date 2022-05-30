@@ -1,11 +1,13 @@
 # Project Name : Psycho Medicine
 # Live link : https://psycho-medicine.web.app/login
 ## Thechnology i use
-* html, css, bootstrap
-* React
-* React route, React hook
-* Firebase authentication, firebase hooks
-* External Toast
+* html, css, bootstrap,Javascript,React,React route, React hook,Firebase authentication, firebase hooks,External Toast
+* In home page you will see a navbar where some menus and login, signup system.
+* If you go to sign up page you can create a new account.An account verificatin link will be sent to your mail. You have to veryfy your account.That's why you have to put a real mail account
+* In the password section you have to give a strong password otherwise it will show an error message. You have to put confirm the password
+* Then you have to click ters and condition button.And then the sign up button will br enabled.
+* On the other hand you can create your account by social google account.
+* In the home page, If you click on appoint button ,it will take you to the appointment page.But you have to log in first. If you don't log in then it will take you to the log in page
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
