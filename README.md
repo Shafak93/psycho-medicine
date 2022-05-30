@@ -1,6 +1,6 @@
 # Project Name : Psycho Medicine
 # Live link : https://psycho-medicine.web.app/login
-## Thechnology i use
+## Project description and thechnology i use
 * html, css, bootstrap,Javascript,React,React route, React hook,Firebase authentication, firebase hooks,External Toast
 * In home page you will see a navbar where some menus and login, signup system.
 * If you go to sign up page you can create a new account.An account verificatin link will be sent to your mail. You have to veryfy your account.That's why you have to put a real mail account
