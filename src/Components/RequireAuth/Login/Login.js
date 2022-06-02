@@ -7,6 +7,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import auth from '../../../firebase.init';
 import Loading from '../../Loading/Loading';
 import SocialMedia from '../../SocialMedia/SocialMedia';
+import './Login.css'
+import { BsFillEnvelopeFill } from "react-icons/bs";
+import { RiLockPasswordFill } from "react-icons/ri";
 
 const Login = () => {
     const [userInput, setUserInput] = useState({
@@ -104,9 +107,62 @@ Error toast function
         
     }
     return (
-        <div>
-            <div className='mt-5 container w-25'>
-           <Form onSubmit={handleLogin}>
+        <div className='container py-3'>
+            <div className='jumbotron'>
+                <div className='row'>
+                    <div className="col-md-5 text-center d-flex justify-content-center align-items-center">
+                        <div className="card-class card bg-secondary text-white">
+                            <div className="card-body">
+                                <h1 className="display-3">Psycho Medicine</h1>
+                                <p>A psychologist's website for psychological treatment</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 offset-md-1  py-3">
+                        <div className='card'>
+                            <div className='card-body'>
+                            <Form onSubmit={handleLogin}>
+                                <Form.Group className="my-3 d-flex" controlId="formBasicEmail">
+                                        <span class="pe-3">
+                                            <BsFillEnvelopeFill size={35}></BsFillEnvelopeFill>
+                                        </span>
+                                    <Form.Control type="email" name='email' placeholder="Enter email" onChange={handleEmail}/>
+                                    
+                                </Form.Group>
+                                <div className='ps-5'><small>{errors?.email && <p className="text-danger">{errors.email}</p>}</small></div>
+                                <Form.Group className="mb-3 d-flex"  controlId="formBasicPassword">
+                                <span class="pe-3">
+                                            <RiLockPasswordFill size={35}></RiLockPasswordFill>
+                                </span>
+                                    <Form.Control type="password" name='password' placeholder="Password" onChange={handlePassword} />
+                                    
+                                </Form.Group>
+                                <div className='ps-5'><small>{errors?.password && <p className="text-danger">{errors.password}</p> }</small></div>
+                                
+                                <p>Don't have an account ? <Link to={'/signup'} className='text-danger text-decoration-none' onClick={navigateSignup}>Signup Now</Link> </p>
+                                <Button variant="primary" type="submit">
+                                    Login
+                                </Button>
+                                <p>Forget password ? <a href="" className='text-primary text-decoration-none' onClick={forgetPasswordReset}>Reset password</a> </p>
+                                <ToastContainer />
+                            </Form>
+                            <SocialMedia></SocialMedia>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+            <div className='mt-5 '>
+           {/* <Form onSubmit={handleLogin}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Control type="email" name='email' placeholder="Enter email" onChange={handleEmail}/>
                     {errors?.email && <p className="text-danger">{errors.email}</p>}
@@ -122,8 +178,8 @@ Error toast function
                 </Button>
                 <p>Forget password ? <a href="" className='text-primary text-decoration-none' onClick={forgetPasswordReset}>Reset password</a> </p>
                 <ToastContainer />
-            </Form>
-            <SocialMedia></SocialMedia>
+            </Form> */}
+            {/* <SocialMedia></SocialMedia> */}
         </div>
         
         </div>

@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import auth from '../../firebase.init';
 import google from '../../images/google.ico';
 import Loading from '../Loading/Loading';
+import { FcGoogle } from "react-icons/fc";
 
 const SocialMedia = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
@@ -44,13 +45,6 @@ const SocialMedia = () => {
     if(loading){
         return <Loading></Loading>
     }
-
-    // if (error) {
-    //     errorElement = ''
-    //     errorElement =  <div>
-    //         <p className='text-danger text-center'>Error: {error?.message}</p>
-    //       </div>
-    //   }
     return (
         <div>
              <div className='d-flex align-items-center'>
@@ -59,12 +53,14 @@ const SocialMedia = () => {
                 <div style={{height:'1px'}} className='bg-secondary  w-50'></div>
             </div>
             
+            <div className='d-flex justify-content-center'>
             <button 
                 onClick={()=> signInWithGoogle()}
-                className='btn btn-secondary   mx-auto w-100 my-2'>
-                    <img className='w-25' src={google} alt="" />
-                    <span className='px-4'>Google Signin</span>
+                className='btn btn-secondary my-2'>
+                    {/* <img className='w-25' src={google} alt="" /> */}
+                    <span> <FcGoogle size={35}></FcGoogle> Google Signin</span>
                 </button>
+            </div>
                 <ToastContainer />
         </div>
     );

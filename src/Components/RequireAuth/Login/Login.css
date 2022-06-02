@@ -1,0 +1,13 @@
+.form-Control{
+    margin: 0 auto;
+    width: 350px;
+}
+.card-class{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.jumbotron {
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    background-color: #e9ecef;
+    border-radius: .3rem;
+  }
